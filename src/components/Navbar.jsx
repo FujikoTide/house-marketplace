@@ -32,7 +32,7 @@ function Navbar() {
                 <LocalOfferIcon
                   fill={location === '/offers' ? '#2c2c2c' : '#8f8f8f'}
                 />
-                <p>Offer</p>
+                <p>Offers</p>
               </NavLink>
             </li>
             <li className='navbarListItem'>
