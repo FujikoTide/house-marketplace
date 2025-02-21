@@ -1,9 +1,11 @@
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import DeleteIcon from '../assets/icon-components/DeleteIcon'
+import EditIcon from '../assets/icon-components/EditIcon'
 import bedIcon from '../assets/svg/bedIcon.svg'
 import bathtubIcon from '../assets/svg/bathtubIcon.svg'
 
-function ListingItem({ listing, id, onDelete }) {
+function ListingItem({ listing, id, onEdit, onDelete }) {
   return (
     <li className='categoryListing'>
       <Link
@@ -47,6 +49,7 @@ function ListingItem({ listing, id, onDelete }) {
         </div>
       </Link>
 
+      {onEdit && <EditIcon className='editIcon' onClick={() => onEdit(id)} />}
       {onDelete && (
         <DeleteIcon
           className='removeIcon'
@@ -57,4 +60,12 @@ function ListingItem({ listing, id, onDelete }) {
     </li>
   )
 }
+
+ListingItem.propTypes = {
+  listing: PropTypes.object,
+  id: PropTypes.string,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
+}
+
 export default ListingItem

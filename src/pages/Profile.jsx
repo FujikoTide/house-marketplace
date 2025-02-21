@@ -16,7 +16,6 @@ import { toast } from 'react-toastify'
 import ListingItem from '../components/ListingItem'
 import ArrowRightIcon from '../assets/icon-components/ArrowRightIcon'
 import homeIcon from '../assets/svg/homeIcon.svg'
-import { queryRef } from 'firebase/data-connect'
 
 function Profile() {
   const auth = getAuth()
@@ -76,6 +75,7 @@ function Profile() {
         })
       }
     } catch (error) {
+      console.log(error)
       toast.error('Could not update profile details')
     }
   }
@@ -97,6 +97,8 @@ function Profile() {
       toast.success('Successfully deleted listing')
     }
   }
+
+  const onEdit = (listingId) => navigate(`/edit-listing/${listingId}`)
 
   return (
     <div className='profile'>
@@ -157,6 +159,7 @@ function Profile() {
                   listing={listing.data}
                   id={listing.id}
                   onDelete={() => onDelete(listing.id)}
+                  onEdit={() => onEdit(listing.id)}
                 />
               ))}
             </ul>
